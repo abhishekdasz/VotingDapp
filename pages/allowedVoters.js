@@ -80,13 +80,13 @@ const allowedVoters = () => {
                             <h1> Create New Voter </h1>
                             <div className={Style.voter_container_box}>
                                 <div className={Style.voter_container_box_div}>
-                                    <div> {...getRootProps()}
+                                    <div {...getRootProps()}> 
                                         <input {...getInputProps()} />
 
                                         <div className={Style.voter_container_box_div_info}>
                                             <p> Upload File: JPG,PNG, GIF, WEBM Max 10MB </p>
                                             <div className={Style.voter_container_box_div_image}>
-                                                <Image src={images.creator} width={150} height={150} objectFit='contain' alt='File upload'/>
+                                                {/* <Image src={images.creator} width={150} height={150} objectFit='contain' alt='File upload'/> */}
                                             </div>
                                             <p> Drag & Drop File </p>
                                             <p> or Browse Media on your device </p>
