@@ -32,8 +32,43 @@ export const VotingProvider = ({children}) =>{
     const [voterLength, setVoterLength] = useState('');
     const [voterAddress, setVoterAddress] = useState([]); 
 
+    // connecting METAMASK
+    const checkIfWalletIsConnected = async() =>{
+      if(!window.ethereum) return setError("Please Install Metamask");
+
+      const account = await window.ethereum.request({method: "eth_accounts"});
+      
+      if(account.length)
+      {
+        setCurrentAccount(account[0]);
+      }
+      else
+      {
+        setError("Please Install Metamask & Connect, Reload");
+      }
+    };
+
+    // connect wallet
+    const connectWallet = async () => {
+      if(!window.ethereum) return setError("Please Install Metamask");
+      const account = await window.ethereum.request({method: "eth_requestAccounts"});
+      setCurrentAccount(account[0])
+    }
+
+    // upload to IPFS voter image
+    const uploadToIPFS = async(file) => {
+      try{
+        const added = await client.add({content: file});
+
+        const url = `https://ipfs.infura.io/ipfs/${added.path}`
+        return url;
+      } catch(error) {
+
+      }
+    }
+
     return (
-        <VotingContext.Provider value={{votingTitle}}>
+        <VotingContext.Provider value={{votingTitle, checkIfWalletIsConnected, connectWallet}}>
             {children}
         </VotingContext.Provider>
     )
