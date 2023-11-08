@@ -1,9 +1,21 @@
 import React from 'react'
+// INTERNAL IMPORT
+import Style from "./Input.module.css";
 
-const Input = () => {
+const Input = ({ inputType, title, placeholder, handleClick }) => {
   return (
-    <div>
-      
+    <div className={Style.input}>
+      <p> {title} </p>
+      {
+        inputType === "text" ? (
+            <div className={Style.input_box}>
+                <input type="text" className={Style.input_box_form} placeholder={placeholder} onChange={handleClick} />
+            </div>
+        ) :
+        (
+            ""
+        )
+      }
     </div>
   )
 }
