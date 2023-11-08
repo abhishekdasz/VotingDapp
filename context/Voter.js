@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Web3Model from 'web3modal'
 import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
@@ -15,6 +15,23 @@ const fetchContract = (signerOrProvider) => new ethers.Contract(VotingAddress, V
 export const VotingContext = React.createContext();
 export const VotingProvider = ({children}) =>{
     const votingTitle = 'My first Smart Contract App'
+    const router = useRouter();
+    const [currentAccount, setCurrentAccount] = useState('');
+    const [candidateLength, setCandidateLength] = useState('');
+    const pushCandidate = [];
+    const candidateIndex = [];
+    const [candidateArray, setCandidateArray] = useState(pushCandidate);
+    // end of candidate data
+
+    const [error, setError] = useState('');
+    const highestVote = [];
+
+    // Voter Section
+    const pushVoter = [];
+    const [voteArray, setVoterArray] = useState(pushVoter);
+    const [voterLength, setVoterLength] = useState('');
+    const [voterAddress, setVoterAddress] = useState([]); 
+
     return (
         <VotingContext.Provider value={{votingTitle}}>
             {children}
