@@ -33,8 +33,77 @@ const allowedVoters = () => {
     })
 
   return (
-    <div>
-      
+    <div className={Style.createVoter}>
+      <div>
+        {fileUrl && (
+            <div className={Style.voterInfo}>
+                <img src={fileUrl} alt='Voter Image'/>
+                <div className='{Style.voterInfo_paragraph'>
+                    <p>
+                        Name: <span> &nbps; {formInput.name} </span>
+                    </p>
+                    <p>
+                        Address: &nbps; <span> {formInput.address.slice(0, 20)} </span>
+                    </p>
+                    <p>
+                        Position: &nbps; <span> {formInput.position} </span>
+                    </p>
+                </div>
+            </div>
+        )}
+        {
+            !fileUrl && (
+                <div className={Style.sideInfo}>
+                    <div className={Style.sideInfo_box}>
+                        <h4> Create candidate For Voting </h4>
+                        <p> Blockchain voting organization, provide ethereum ecosystem </p>
+                        <p className={Style.sideInfo_para}> Contract Candidate </p>
+                    </div>
+                    <div className={Style.car}>
+                        {/* {VoterArray.map((el, i) => (
+                            <div key={i+1} className={Style.card_box}>
+                                <div className={Style.image}>
+                                    <img src="" alt="Profi" />
+                                </div>
+
+                                <div className={Style.card_info}>
+                                    <p> Name </p>
+                                    <p> Address </p>
+                                    <p> Details </p>
+                                </div>
+                            </div>
+                        ))} */}
+                    </div>
+
+                    <div className={Style.voter}>
+                        <div className={Style.voter_container}>
+                            <h1> Create New Voter </h1>
+                            <div className={Style.voter_container_box}>
+                                <div className={Style.voter_container_box_div}>
+                                    <div> {...getRootProps()}
+                                        <input {...getInputProps()} />
+
+                                        <div className={Style.voter_container_box_div_info}>
+                                            <p> Upload File: JPG,PNG, GIF, WEBM Max 10MB </p>
+                                            <div className={Style.voter_container_box_div_image}>
+                                                <Image src={images.creator} width={150} height={150} objectFit='contain' alt='File upload'/>
+                                            </div>
+                                            <p> Drag & Drop File </p>
+                                            <p> or Browse Media on your device </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={Style.input_container}>
+                            <Input />
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+      </div>
     </div>
   )
 }
