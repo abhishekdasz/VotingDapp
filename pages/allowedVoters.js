@@ -101,6 +101,9 @@ const allowedVoters = () => {
                             <Input inputType="text" title="Address" placeholder="Voter Address" handleClick={(e) => setFormInput({...formInput, address: e.target.value})} />
                             <Input inputType="text" title="Position" placeholder="Voter Position" handleClick={(e) => setFormInput({...formInput, position: e.target.value})} />
                         </div>
+                        <div className={Style.Button}>
+                            <Button btnName="Authorized Voter" handleClick={()=>{}}/>
+                        </div>
                     </div>
                 </div>
             )
